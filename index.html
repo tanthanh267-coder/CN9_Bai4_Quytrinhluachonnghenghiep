@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4: Quy trình lựa chọn nghề nghiệp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header/Navigation -->
+    <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-3">
+                <div class="p-2 bg-indigo-600 rounded-lg">
+                    <i class="fa-solid fa-compass text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">BÀI 4: QUY TRÌNH LỰA CHỌN NGHỀ NGHIỆP</h1>
+                    <p class="text-xs text-indigo-200">Thời lượng: 3 tiết</p>
+                </div>
+            </div>
+            
+            <nav class="flex space-x-1 sm:space-x-2 bg-indigo-800/50 p-1 rounded-xl">
+                <button id="btn-tab-theory" onclick="switchTab('theory')" class="px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 bg-white text-indigo-900 shadow">
+                    <i class="fa-solid fa-book-open mr-1.5"></i>Lý thuyết trọng tâm
+                </button>
+                <button id="btn-tab-quiz" onclick="switchTab('quiz')" class="px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 text-indigo-100 hover:text-white">
+                    <i class="fa-solid fa-pen-to-square mr-1.5"></i>Trắc nghiệm
+                </button>
+                <button id="btn-tab-practice" onclick="switchTab('practice')" class="px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 text-indigo-100 hover:text-white">
+                    <i class="fa-solid fa-comments mr-1.5"></i>Luyện tập SGK
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-6xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- TAB 1: LÝ THUYẾT TRỌNG TÂM -->
+        <section id="tab-theory" class="space-y-6">
+            <!-- Section 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                <div class="flex items-center space-x-3 border-b border-slate-100 pb-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">1</span>
+                    <h2 class="text-lg font-bold text-slate-800">Một số lí thuyết cơ bản về lựa chọn nghề nghiệp</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Holland -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 hover:border-indigo-300 transition">
+                        <div class="flex items-center space-x-2 text-indigo-700 font-semibold mb-2">
+                            <i class="fa-solid fa-shapes"></i>
+                            <h3>Lí thuyết mật mã Holland (John Lewis Holland)</h3>
+                        </div>
+                        <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                            <li>Chọn nghề phù hợp với tính cách sẽ giúp dễ thích ứng, hoàn thành tốt công việc, đạt thành công và hạnh phúc.</li>
+                            <li>Chia tính cách và môi trường làm việc thành <strong>6 nhóm</strong>: Kĩ thuật, Nghiên cứu, Nghệ thuật, Xã hội, Quản lí, Nghiệp vụ.</li>
+                            <li>Thực tế, tính cách một người có thể là sự kết hợp của 2 hoặc 3 nhóm.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Career Tree -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 hover:border-indigo-300 transition">
+                        <div class="flex items-center space-x-2 text-emerald-700 font-semibold mb-2">
+                            <i class="fa-solid fa-tree"></i>
+                            <h3>Lí thuyết cây nghề nghiệp</h3>
+                        </div>
+                        <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                            <li><strong>Phần gốc rễ:</strong> Sở thích, khả năng (năng lực), cá tính, giá trị nghề nghiệp.</li>
+                            <li><strong>Phần quả:</strong> Cơ hội việc làm, môi trường làm việc tốt, lương cao, công việc ổn định, được tôn trọng.</li>
+                            <li><strong>Nguyên tắc:</strong> Phải chọn nghề xuất phát từ "gốc rễ" mới gặt hái được "quả ngọt" bền vững; không nên chọn nghề theo cảm tính dựa thuần túy vào "quả".</li>
+                        </ul>
+                    </div>
+
+                    <!-- Ikigai -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 hover:border-indigo-300 transition">
+                        <div class="flex items-center space-x-2 text-rose-700 font-semibold mb-2">
+                            <i class="fa-solid fa-bullseye"></i>
+                            <h3>Triết lí Ikigai (Nhật Bản - Mở rộng)</h3>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            Chọn nghề dựa trên điểm giao thoa của <strong>4 yếu tố</strong>:
+                        </p>
+                        <div class="mt-3 grid grid-cols-2 gap-2 text-xs font-medium">
+                            <div class="bg-rose-50 text-rose-700 p-2 rounded-lg text-center">1. Điều bạn thích</div>
+                            <div class="bg-rose-50 text-rose-700 p-2 rounded-lg text-center">2. Điều bạn giỏi</div>
+                            <div class="bg-rose-50 text-rose-700 p-2 rounded-lg text-center">3. Điều xã hội cần</div>
+                            <div class="bg-rose-50 text-rose-700 p-2 rounded-lg text-center">4. Điều bạn được trả tiền (kiếm sống)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                <div class="flex items-center space-x-3 border-b border-slate-100 pb-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">2</span>
+                    <h2 class="text-lg font-bold text-slate-800">Các bước trong quy trình lựa chọn nghề nghiệp (3 bước)</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="relative bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-100 p-5 rounded-2xl">
+                        <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider block mb-1">Bước 1</span>
+                        <h3 class="font-bold text-indigo-900 mb-2">Đánh giá bản thân</h3>
+                        <p class="text-sm text-slate-600">Xác định sở thích, năng lực, tính cách, sức khỏe, bối cảnh gia đình và mong muốn về giá trị nghề nghiệp qua trắc nghiệm, tư vấn, trải nghiệm thực tế.</p>
+                    </div>
+
+                    <div class="relative bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-100 p-5 rounded-2xl">
+                        <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider block mb-1">Bước 2</span>
+                        <h3 class="font-bold text-indigo-900 mb-2">Tìm hiểu thị trường lao động</h3>
+                        <p class="text-sm text-slate-600">Lập danh sách các nghề quan tâm, tìm hiểu nhu cầu xã hội, nhiệm vụ công việc, yêu cầu phẩm chất, năng lực, môi trường, mức thu nhập,...</p>
+                    </div>
+
+                    <div class="relative bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-100 p-5 rounded-2xl">
+                        <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider block mb-1">Bước 3</span>
+                        <h3 class="font-bold text-indigo-900 mb-2">Ra quyết định</h3>
+                        <p class="text-sm text-slate-600">So sánh, đối chiếu kết quả ở Bước 1 và Bước 2 để tìm ra sự phù hợp nhất và đưa ra quyết định chọn nghề.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                <div class="flex items-center space-x-3 border-b border-slate-100 pb-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">3</span>
+                    <h2 class="text-lg font-bold text-slate-800">Các yếu tố ảnh hưởng tới quyết định lựa chọn nghề nghiệp</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-amber-50/60 border border-amber-200/80 p-5 rounded-2xl">
+                        <h3 class="font-bold text-amber-900 mb-3 flex items-center">
+                            <i class="fa-solid fa-user-gear mr-2 text-amber-600"></i>Yếu tố chủ quan
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li class="flex items-start">
+                                <span class="font-semibold min-w-[80px] text-amber-800">Năng lực:</span>
+                                <span>Sức khỏe, trình độ, kĩ năng thao tác/tư duy.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-semibold min-w-[80px] text-amber-800">Sở thích:</span>
+                                <span>Động lực để theo đuổi, vượt khó và sáng tạo.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-semibold min-w-[80px] text-amber-800">Cá tính:</span>
+                                <span>Tính cách phù hợp với đặc thù công việc (ví dụ: trầm tĩnh, độc lập hợp với lập trình, an ninh mạng).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-sky-50/60 border border-sky-200/80 p-5 rounded-2xl">
+                        <h3 class="font-bold text-sky-900 mb-3 flex items-center">
+                            <i class="fa-solid fa-users-gear mr-2 text-sky-600"></i>Yếu tố khách quan
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li class="flex items-start">
+                                <span class="font-semibold min-w-[90px] text-sky-800">Nhà trường:</span>
+                                <span>Bài giảng, hoạt động trải nghiệm.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-semibold min-w-[90px] text-sky-800">Gia đình:</span>
+                                <span>Hoàn cảnh, định hướng.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-semibold min-w-[90px] text-sky-800">Xã hội:</span>
+                                <span>Cung - cầu lao động, trào lưu.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-semibold min-w-[90px] text-sky-800">Nhóm bạn:</span>
+                                <span>Môi trường chia sẻ nhưng tránh chạy theo phong trào.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: TRẮC NGHIỆM TƯƠNG TÁC -->
+        <section id="tab-quiz" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                <!-- Quiz Header Progress -->
+                <div class="flex flex-wrap justify-between items-center pb-4 mb-6 border-b border-slate-100 gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Bộ câu hỏi trắc nghiệm Bài 4</h2>
+                        <p class="text-sm text-slate-500">Hoàn thành các câu hỏi trắc nghiệm nhiều lựa chọn và Đúng/Sai</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="text-right">
+                            <div class="text-xs text-slate-500 uppercase font-semibold">Điểm số</div>
+                            <div id="score-display" class="text-2xl font-bold text-indigo-600">0 / 6</div>
+                        </div>
+                        <button onclick="resetQuiz()" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 rounded-lg transition">
+                            <i class="fa-solid fa-rotate-right mr-1"></i> Làm lại
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Questions Container -->
+                <div id="quiz-questions" class="space-y-8">
+                    <!-- Questions will be injected dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: CÂU TRẢ LỜI LUYỆN TẬP SGK -->
+        <section id="tab-practice" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-slate-800">Gợi ý trả lời câu hỏi Luyện tập (SGK)</h2>
+                    <p class="text-sm text-slate-500">Nội dung câu trả lời chuẩn định hướng theo tài liệu Bài 4</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Q1 -->
+                    <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/50">
+                        <div class="font-bold text-indigo-900 mb-3 flex items-start">
+                            <span class="bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded-md mr-2 mt-0.5 shrink-0">Trang 27</span>
+                            <span>1. "Với lí thuyết mật mã Holland và lí thuyết cây nghề nghiệp, em hãy xác định những đặc điểm cơ bản về sở thích, năng lực, cá tính của bản thân."</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-sm text-slate-700 space-y-2">
+                            <p class="italic text-slate-500 font-medium mb-1">(Học sinh tự liên hệ bản thân, dưới đây là mẫu trả lời chuẩn định hướng kĩ thuật):</p>
+                            <p><strong>• Sở thích:</strong> Thích tìm hiểu máy móc, tháo lắp đồ điện tử trong gia đình, thích lập trình game/phần mềm đơn giản.</p>
+                            <p><strong>• Năng lực:</strong> Học tốt các môn Toán, Khoa học tự nhiên, Tin học; có kĩ năng sử dụng máy tính thành thạo, tư duy logic tốt.</p>
+                            <p><strong>• Cá tính:</strong> Thích sự tỉ mỉ, cẩn thận, có khả năng tập trung làm việc độc lập trong thời gian dài (thuộc nhóm Kĩ thuật kết hợp nhóm Nghiên cứu theo Holland).</p>
+                            <p class="text-emerald-700 font-medium pt-1"><strong>• Đánh giá theo cây nghề nghiệp:</strong> Đặc điểm "gốc rễ" trên phù hợp để chọn các nghề kĩ thuật - công nghệ tương lai.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/50">
+                        <div class="font-bold text-indigo-900 mb-3 flex items-start">
+                            <span class="bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded-md mr-2 mt-0.5 shrink-0">Trang 29</span>
+                            <span>2. "Với quy trình chọn nghề 3 bước, em có thể giải thích tại sao mình phải thực hiện theo từng bước đó hay không?"</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-sm text-slate-700 space-y-2">
+                            <p class="font-semibold text-slate-800">Thực hiện đúng 3 bước là vì:</p>
+                            <p><strong>• Phải làm Bước 1 (Đánh giá bản thân) trước:</strong> Để hiểu rõ mình thích gì, có khả năng làm gì và tính cách ra sao (xác định "gốc rễ").</p>
+                            <p><strong>• Kế tiếp làm Bước 2 (Tìm hiểu thị trường lao động):</strong> Để xem xã hội đang cần những nghề nào, yêu cầu của công việc ra sao, thu nhập và cơ hội phát triển như thế nào.</p>
+                            <p><strong>• Cuối cùng làm Bước 3 (Ra quyết định):</strong> Khi đã có đủ thông tin từ Bước 1 và Bước 2, việc đối chiếu, so sánh giữa "Cái mình có" và "Cái xã hội cần" mới giúp đưa ra quyết định chính xác, tránh chọn nhầm nghề hoặc chọn nghề không xin được việc.</p>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/50">
+                        <div class="font-bold text-indigo-900 mb-3 flex items-start">
+                            <span class="bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded-md mr-2 mt-0.5 shrink-0">Trang 30</span>
+                            <span>3. "Tiến hành thảo luận về những lí do bản thân đã quyết định lựa chọn hoặc không lựa chọn nghề nghiệp trong lĩnh vực kĩ thuật, công nghệ. Giải thích tại sao đưa ra quyết định đó của mình."</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-sm text-slate-700 space-y-3">
+                            <div>
+                                <p class="font-bold text-emerald-700"> Trường hợp LỰA CHỌN:</p>
+                                <p class="pl-4">Lí do là vì bản thân có sở thích công nghệ, học tốt môn Tin học/Toán, tính cách cẩn thận, tỉ mỉ và thấy thị trường lao động ngành này (như lập trình, vi mạch, tự động hóa) đang rất phát triển.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-rose-700"> Trường hợp KHÔNG LỰA CHỌN:</p>
+                                <p class="pl-4">Lí do vì bản thân thiên về các môn xã hội/nghệ thuật, không có năng lực về tư duy kĩ thuật, không thích làm việc trực tiếp với máy móc hay trong môi trường công nghiệp có tính kỉ luật khắt khe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-auto">
+        BÀI 4: QUY TRÌNH LỰA CHỌN NGHỀ NGHIỆP — Chúc các em ôn tập đạt kết quả tốt!
+    </footer>
+
+    <script>
+        // Data for Quiz questions strictly mapped from uploaded document
+        const quizData = [
+            {
+                id: 1,
+                type: 'single',
+                part: 'PHẦN 1: CÂU HỎI TRẮC NGHIỆM NHIỀU LỰA CHỌN',
+                question: 'Câu 1: Theo lí thuyết mật mã Holland, môi trường nghề nghiệp và tính cách con người được chia thành mấy nhóm chính?',
+                options: [
+                    'A. 4 nhóm.',
+                    'B. 5 nhóm.',
+                    'C. 6 nhóm.',
+                    'D. 7 nhóm.'
+                ],
+                correct: 2, // Index 2 -> C
+                explanation: 'Gồm: Kĩ thuật, Nghiên cứu, Nghệ thuật, Xã hội, Quản lí, Nghiệp vụ.'
+            },
+            {
+                id: 2,
+                type: 'single',
+                part: 'PHẦN 1: CÂU HỎI TRẮC NGHIỆM NHIỀU LỰA CHỌN',
+                question: 'Câu 2: Trong mô hình "Cây nghề nghiệp", yếu tố nào dưới đây thuộc phần "gốc rễ"?',
+                options: [
+                    'A. Mức lương cao.',
+                    'B. Cơ hội việc làm rộng mở.',
+                    'C. Khả năng và sở thích cá nhân.',
+                    'D. Công việc ổn định, vị thế xã hội.'
+                ],
+                correct: 2, // Index 2 -> C
+                explanation: 'Gốc rễ gồm sở thích, khả năng, cá tính, giá trị nghề nghiệp.'
+            },
+            {
+                id: 3,
+                type: 'single',
+                part: 'PHẦN 1: CÂU HỎI TRẮC NGHIỆM NHIỀU LỰA CHỌN',
+                question: 'Câu 3: Mối quan hệ đúng đắn khi chọn nghề theo lí thuyết "Cây nghề nghiệp" là gì?',
+                options: [
+                    'A. Chọn nghề dựa vào "quả" trước rồi rèn luyện "gốc rễ" sau.',
+                    'B. Dựa vào "gốc rễ" của bản thân để gặt hái "quả" ngọt trong nghề nghiệp.',
+                    'C. Chỉ cần quan tâm đến mức lương và môi trường làm việc tốt.',
+                    'D. "Gốc rễ" và "quả" không có mối liên hệ nào với nhau.'
+                ],
+                correct: 1, // Index 1 -> B
+                explanation: 'Phải đi từ nền tảng gốc rễ bản thân mới có kết quả tốt.'
+            },
+            {
+                id: 4,
+                type: 'single',
+                part: 'PHẦN 1: CÂU HỎI TRẮC NGHIỆM NHIỀU LỰA CHỌN',
+                question: 'Câu 4: Quy trình lựa chọn nghề nghiệp gồm mấy bước cơ bản?',
+                options: [
+                    'A. 2 bước.',
+                    'B. 3 bước.',
+                    'C. 4 bước.',
+                    'D. 5 bước.'
+                ],
+                correct: 1, // Index 1 -> B
+                explanation: '3 bước: 1. Đánh giá bản thân -> 2. Tìm hiểu thị trường lao động -> 3. Ra quyết định.'
+            },
+            {
+                id: 5,
+                type: 'single',
+                part: 'PHẦN 1: CÂU HỎI TRẮC NGHIỆM NHIỀU LỰA CHỌN',
+                question: 'Câu 5: Học sinh A quyết định chọn ngành Công nghệ thông tin vì thấy tất cả các bạn trong nhóm chơi thân đều đăng kí ngành này, mặc dù bản thân không thích máy tính và tư duy toán học kém. Yếu tố nào đã tác động tiêu cực đến quyết định của A?',
+                options: [
+                    'A. Yếu tố nhà trường.',
+                    'B. Chạy theo phong trào của nhóm bạn.',
+                    'C. Yếu tố gia đình áp đặt.',
+                    'D. Đánh giá đúng năng lực bản thân.'
+                ],
+                correct: 1, // Index 1 -> B
+                explanation: 'Chọn nghề theo cảm tính phong trào nhóm bạn là nguy cơ chọn nhầm nghề.'
+            },
+            {
+                id: 6,
+                type: 'tf_group',
+                part: 'PHẦN 2: CÂU HỎI TRẮC NGHIỆM ĐÚNG/SAI',
+                question: 'Câu 6: Khi tìm hiểu và thực hiện quy trình lựa chọn nghề nghiệp trong lĩnh vực kĩ thuật, công nghệ, các nhận định sau đây là Đúng hay Sai?',
+                items: [
+                    {
+                        key: 'a',
+                        text: 'a) Theo Holland, nhóm tính cách "Kĩ thuật" thường có đặc điểm là thích vận hành, điều khiển máy móc, thao tác khéo léo và suy nghĩ thực tế.',
+                        correct: true,
+                        explanation: 'ĐÚNG (Đây là đặc trưng chuẩn của nhóm Kĩ thuật trong mật mã Holland).'
+                    },
+                    {
+                        key: 'b',
+                        text: 'b) Bước đầu tiên trong quy trình lựa chọn nghề nghiệp là tìm hiểu nhu cầu của thị trường lao động.',
+                        correct: false,
+                        explanation: 'SAI (Bước đầu tiên là Bước 1: Đánh giá bản thân).'
+                    },
+                    {
+                        key: 'c',
+                        text: 'c) Yếu tố gia đình như hoàn cảnh kinh tế hay truyền thống nghề nghiệp là yếu tố chủ quan ảnh hưởng đến việc chọn nghề.',
+                        correct: false,
+                        explanation: 'SAI (Gia đình là yếu tố khách quan; các yếu tố chủ quan là năng lực, sở thích, cá tính).'
+                    },
+                    {
+                        key: 'd',
+                        text: 'd) Người có tính cách trầm tĩnh, làm việc độc lập cao rất phù hợp với một số nghề kĩ thuật như lập trình viên, chuyên gia an ninh mạng.',
+                        correct: true,
+                        explanation: 'ĐÚNG (SGK bài 4, mục III.1 có nêu rõ nội dung này).'
+                    }
+                ]
+            }
+        ];
+
+        // State variables
+        let userAnswers = {};
+
+        function switchTab(tab) {
+            const tabs = ['theory', 'quiz', 'practice'];
+            tabs.forEach(t => {
+                const contentEl = document.getElementById(`tab-${t}`);
+                const btnEl = document.getElementById(`btn-tab-${t}`);
+                if (t === tab) {
+                    contentEl.classList.remove('hidden');
+                    btnEl.classList.add('bg-white', 'text-indigo-900', 'shadow');
+                    btnEl.classList.remove('text-indigo-100');
+                } else {
+                    contentEl.classList.add('hidden');
+                    btnEl.classList.remove('bg-white', 'text-indigo-900', 'shadow');
+                    btnEl.classList.add('text-indigo-100');
+                }
+            });
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-questions');
+            container.innerHTML = '';
+
+            quizData.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = "p-5 rounded-2xl border border-slate-200 bg-slate-50/30";
+
+                if (q.type === 'single') {
+                    card.innerHTML = `
+                        <div class="font-semibold text-slate-800 text-base mb-3">${q.question}</div>
+                        <div class="space-y-2 mb-4">
+                            ${q.options.map((opt, oIdx) => `
+                                <button onclick="selectSingleOption(${q.id}, ${oIdx})" 
+                                        id="q${q.id}-opt-${oIdx}"
+                                        class="w-full text-left p-3 rounded-xl border text-sm transition-all flex items-center justify-between border-slate-200 bg-white hover:border-indigo-300">
+                                    <span>${opt}</span>
+                                    <span class="icon-status"></span>
+                                </button>
+                            `).join('')}
+                        </div>
+                        <div id="q${q.id}-exp" class="hidden p-3 rounded-xl bg-indigo-50 border border-indigo-100 text-xs text-indigo-900">
+                            <strong><i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> Giải thích:</strong> ${q.explanation}
+                        </div>
+                    `;
+                } else if (q.type === 'tf_group') {
+                    card.innerHTML = `
+                        <div class="font-semibold text-slate-800 text-base mb-4">${q.question}</div>
+                        <div class="space-y-4">
+                            ${q.items.map((item) => `
+                                <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                    <p class="text-sm text-slate-700 font-medium mb-3">${item.text}</p>
+                                    <div class="flex items-center space-x-3">
+                                        <button onclick="selectTFAnswer('${item.key}', true)" id="tf-${item.key}-true" class="px-4 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:border-emerald-500 hover:text-emerald-600 bg-white transition">
+                                            ĐÚNG
+                                        </button>
+                                        <button onclick="selectTFAnswer('${item.key}', false)" id="tf-${item.key}-false" class="px-4 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 hover:border-rose-500 hover:text-rose-600 bg-white transition">
+                                            SAI
+                                        </button>
+                                    </div>
+                                    <div id="tf-${item.key}-exp" class="hidden mt-3 p-2.5 rounded-lg bg-indigo-50 border border-indigo-100 text-xs text-indigo-900">
+                                        <strong><i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> Giải thích:</strong> ${item.explanation}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
+                container.appendChild(card);
+            });
+            updateScoreDisplay();
+        }
+
+        function selectSingleOption(qId, optIdx) {
+            const q = quizData.find(item => item.id === qId);
+            userAnswers[qId] = optIdx;
+
+            q.options.forEach((_, oIdx) => {
+                const btn = document.getElementById(`q${qId}-opt-${oIdx}`);
+                const isCorrect = oIdx === q.correct;
+                const isSelected = oIdx === optIdx;
+
+                btn.className = "w-full text-left p-3 rounded-xl border text-sm transition-all flex items-center justify-between ";
+                
+                if (isSelected) {
+                    if (isCorrect) {
+                        btn.className += "bg-emerald-50 border-emerald-500 text-emerald-900 font-medium";
+                        btn.querySelector('.icon-status').innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600"></i>';
+                    } else {
+                        btn.className += "bg-rose-50 border-rose-500 text-rose-900 font-medium";
+                        btn.querySelector('.icon-status').innerHTML = '<i class="fa-solid fa-circle-xmark text-rose-600"></i>';
+                    }
+                } else if (isCorrect) {
+                    btn.className += "bg-emerald-50/50 border-emerald-300 text-emerald-800";
+                    btn.querySelector('.icon-status').innerHTML = '<i class="fa-solid fa-check text-emerald-500"></i>';
+                } else {
+                    btn.className += "border-slate-200 bg-white opacity-60";
+                    btn.querySelector('.icon-status').innerHTML = '';
+                }
+            });
+
+            const expEl = document.getElementById(`q${qId}-exp`);
+            expEl.classList.remove('hidden');
+
+            updateScoreDisplay();
+        }
+
+        function selectTFAnswer(key, value) {
+            userAnswers[`tf_${key}`] = value;
+            const qGroup = quizData.find(q => q.type === 'tf_group');
+            const item = qGroup.items.find(i => i.key === key);
+
+            const btnTrue = document.getElementById(`tf-${key}-true`);
+            const btnFalse = document.getElementById(`tf-${key}-false`);
+            const expEl = document.getElementById(`tf-${key}-exp`);
+
+            const isCorrect = (value === item.correct);
+
+            if (value === true) {
+                btnTrue.className = `px-4 py-1.5 text-xs font-bold rounded-lg border text-white ${isCorrect ? 'bg-emerald-600 border-emerald-600' : 'bg-rose-600 border-rose-600'}`;
+                btnFalse.className = "px-4 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-slate-50 opacity-50";
+            } else {
+                btnFalse.className = `px-4 py-1.5 text-xs font-bold rounded-lg border text-white ${isCorrect ? 'bg-emerald-600 border-emerald-600' : 'bg-rose-600 border-rose-600'}`;
+                btnTrue.className = "px-4 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-slate-50 opacity-50";
+            }
+
+            expEl.classList.remove('hidden');
+            updateScoreDisplay();
+        }
+
+        function updateScoreDisplay() {
+            let correctCount = 0;
+            
+            // Check single options (5 questions)
+            quizData.filter(q => q.type === 'single').forEach(q => {
+                if (userAnswers[q.id] === q.correct) {
+                    correctCount++;
+                }
+            });
+
+            // Check TF group (1 question counted as whole if all sub-items are correct)
+            const tfGroup = quizData.find(q => q.type === 'tf_group');
+            if (tfGroup) {
+                let tfAllCorrect = true;
+                let tfAnswered = true;
+                tfGroup.items.forEach(item => {
+                    if (userAnswers[`tf_${item.key}`] === undefined) {
+                        tfAnswered = false;
+                    } else if (userAnswers[`tf_${item.key}`] !== item.correct) {
+                        tfAllCorrect = false;
+                    }
+                });
+                if (tfAnswered && tfAllCorrect) {
+                    correctCount++;
+                }
+            }
+
+            document.getElementById('score-display').innerText = `${correctCount} / 6`;
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            renderQuiz();
+        }
+
+        // Initialize quiz on load
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
+© 2026 Nhóm giáo viên: Đỗ Tấn Thạnh, Đoàn Thị Thủy Tiên. Mọi quyền được bảo lưu.
